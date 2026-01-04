@@ -1,197 +1,220 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <title>Goes To Alun-Alun Bandung 31 Januari</title>
+<meta charset="UTF-8">
+<title>Goes To Alun-Alun Bandung 31 Januari</title>
 
-    <!-- ICON -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- ICON -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Trebuchet MS', Arial, sans-serif;
-            background: url('https://files.catbox.moe/zk5mgy.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: #fff;
-        }
+<style>
+body{
+    margin:0;
+    font-family:'Trebuchet MS',Arial,sans-serif;
+    background:url('https://files.catbox.moe/zk5mgy.jpg') no-repeat center center fixed;
+    background-size:cover;
+    color:#fff;
+}
 
-        .overlay {
-            background: rgba(0, 0, 0, 0.75);
-            min-height: 100vh;
-            padding: 30px 20px;
-        }
+.overlay{
+    background:rgba(0,0,0,.75);
+    min-height:100vh;
+    padding:40px 25px;
+}
 
-        h1 {
-            text-align: center;
-            font-size: 36px;
-            color: #ffd700;
-            animation: glow 2s infinite alternate;
-        }
+/* JUDUL */
+h1{
+    text-align:center;
+    font-size:38px;
+    color:#ffd700;
+    animation:glow 2s infinite alternate;
+}
 
-        @keyframes glow {
-            from { text-shadow: 0 0 5px #ffd700; }
-            to { text-shadow: 0 0 20px #ffd700; }
-        }
+@keyframes glow{
+    from{ text-shadow:0 0 5px #ffd700;}
+    to{ text-shadow:0 0 25px #ffd700;}
+}
 
-        .subtitle {
-            text-align: center;
-            color: #00ffcc;
-            margin-bottom: 30px;
-            font-style: italic;
-        }
+/* CARD DIPERLUAS */
+.trip-card{
+    max-width:900px;
+    margin:auto;
+    background:rgba(20,20,20,.95);
+    border:2px solid #8b5a2b;
+    border-radius:18px;
+    padding:35px;
+    box-shadow:0 0 30px rgba(255,215,0,.4);
+    animation:fadeIn 1.5s ease;
+}
 
-        .trip-card {
-            max-width: 720px;
-            margin: auto;
-            background: rgba(25, 25, 25, 0.95);
-            border: 2px solid #8b5a2b;
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
-            animation: fadeIn 1.5s ease;
-        }
+@keyframes fadeIn{
+    from{opacity:0;transform:translateY(25px);}
+    to{opacity:1;transform:translateY(0);}
+}
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+h2{
+    text-align:center;
+    color:#ffd700;
+}
 
-        h2 {
-            text-align: center;
-            color: #ffd700;
-        }
+.label{
+    color:#00ffcc;
+    font-weight:bold;
+}
 
-        .label {
-            color: #00ffcc;
-            font-weight: bold;
-        }
+ul{ padding-left:22px; }
 
-        ul {
-            padding-left: 20px;
-        }
+.price{
+    text-align:center;
+    font-size:24px;
+    color:#ff4d4d;
+    margin:25px 0;
+    font-weight:bold;
+}
 
-        .price {
-            text-align: center;
-            font-size: 22px;
-            color: #ff4d4d;
-            margin: 20px 0;
-            font-weight: bold;
-        }
+.pickup{
+    background:rgba(255,215,0,.15);
+    padding:15px;
+    border-radius:12px;
+    margin-top:18px;
+}
 
-        .pickup {
-            background: rgba(255, 215, 0, 0.15);
-            padding: 12px;
-            border-radius: 10px;
-            margin-top: 15px;
-        }
+/* WA BUTTON */
+.wa-btn{
+    display:block;
+    width:fit-content;
+    margin:35px auto 0;
+    padding:15px 32px;
+    background:#25D366;
+    color:#fff;
+    border-radius:45px;
+    font-size:17px;
+    text-decoration:none;
+    font-weight:bold;
+    box-shadow:0 0 18px rgba(37,211,102,.7);
+    transition:.3s;
+}
+.wa-btn:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 28px rgba(37,211,102,1);
+}
 
-        /* WhatsApp Button */
-        .wa-btn {
-            display: block;
-            width: fit-content;
-            margin: 30px auto 0;
-            padding: 14px 28px;
-            background: #25D366;
-            color: #fff;
-            border-radius: 40px;
-            font-size: 16px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 0 15px rgba(37, 211, 102, 0.7);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+/* BATTERY */
+.battery{
+    position:fixed;
+    top:15px;
+    right:15px;
+    width:150px;
+    background:rgba(0,0,0,.75);
+    padding:10px;
+    border-radius:12px;
+    box-shadow:0 0 12px rgba(0,255,204,.6);
+    font-size:12px;
+}
 
-        .wa-btn i {
-            margin-right: 8px;
-        }
+.battery-top{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    margin-bottom:6px;
+}
 
-        .wa-btn:hover {
-            transform: scale(1.08);
-            box-shadow: 0 0 25px rgba(37, 211, 102, 1);
-        }
+.battery-bar{
+    width:100%;
+    height:8px;
+    background:#333;
+    border-radius:10px;
+    overflow:hidden;
+}
 
-        /* Battery */
-        .battery {
-            position: fixed;
-            top: 15px;
-            right: 15px;
-            background: rgba(0,0,0,0.7);
-            padding: 8px 12px;
-            border-radius: 10px;
-            font-size: 13px;
-            box-shadow: 0 0 10px rgba(0,255,204,0.5);
-        }
+.battery-fill{
+    height:100%;
+    width:50%;
+    background:linear-gradient(90deg,#00ffcc,#00cc99);
+    transition:.5s;
+}
 
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            font-size: 13px;
-            color: #aaa;
-        }
-    </style>
+footer{
+    text-align:center;
+    margin-top:45px;
+    font-size:13px;
+    color:#aaa;
+}
+</style>
 </head>
+
 <body>
 
+<!-- BATTERY -->
 <div class="battery">
-    <i class="fas fa-battery-half"></i>
-    <span id="batteryLevel">Loading...</span>
+    <div class="battery-top">
+        <i id="batteryIcon" class="fas fa-battery-half"></i>
+        <span id="batteryLevel">--%</span>
+    </div>
+    <div class="battery-bar">
+        <div id="batteryFill" class="battery-fill"></div>
+    </div>
 </div>
 
 <div class="overlay">
-    <h1><i class="fas fa-map-signs"></i>TRIP Alun-Alun Bandung</h1>
+<h1><i class="fas fa-map-signs"></i> TRIP Alun-Alun Bandung</h1>
 
-    <div class="trip-card">
-        <h2>Alun-Alun Bandung</h2>
+<div class="trip-card">
+<h2>Alun-Alun Bandung</h2>
 
-        <p><span class="label"><i class="fas fa-gift"></i> Fasilitas:</span></p>
-        <ul>
-            <li>Transportasi PP</li>
-            <li>Bus 2-3 (59)</li>
-            <li>Tips crew,solar,parkir</li>
-            <li>Dokumentasi</li>
-        </ul>
+<p><span class="label"><i class="fas fa-gift"></i> Fasilitas:</span></p>
+<ul>
+<li>Transportasi PP</li>
+<li>Bus 2-3 (59 Seat)</li>
+<li>Tips crew, solar & parkir</li>
+<li>Dokumentasi</li>
+</ul>
 
-        <p><span class="label"><i class="fas fa-clock"></i> Durasi:</span> 1 Hari</p>
+<p><span class="label"><i class="fas fa-clock"></i> Durasi:</span> 1 Hari</p>
 
-        <div class="price">
-            <i class="fas fa-coins"></i> Rp 70.000 / orang
-        </div>
+<div class="price">
+<i class="fas fa-coins"></i> Rp 70.000 / orang
+</div>
 
-        <div class="pickup">
-            <span class="label"><i class="fas fa-bus"></i> Penjemputan:</span><br>
-            - Majalaya 
-- Rancaekek 
-- cileunyi 
-- Buahbatu
-- pasko
-- baros
-        </div>
+<div class="pickup">
+<span class="label"><i class="fas fa-bus"></i> Penjemputan:</span><br>
+Majalaya • Rancaekek • Cileunyi • Buahbatu • Pasko • Baros
+</div>
 
-        <a class="wa-btn" href="https://wa.me/6285194293890?text=Asalamualaikum%20saya%20mau%20booking%20trip%20alban" target="_blank">
-            <i class="fab fa-whatsapp"></i> Booking via WhatsApp
-        </a>
-    </div>
+<a class="wa-btn" href="https://wa.me/6285194293890?text=Asalamualaikum%20saya%20mau%20booking%20trip%20alun-alun%20bandung" target="_blank">
+<i class="fab fa-whatsapp"></i> Booking via WhatsApp
+</a>
+</div>
 
-    <footer>
-        © Wildan Adventure
-    </footer>
+<footer>© Wildan Adventure</footer>
 </div>
 
 <script>
-    // Battery Percentage
-    if (navigator.getBattery) {
-        navigator.getBattery().then(function(battery) {
-            function updateBattery() {
-                let level = Math.round(battery.level * 100);
-                document.getElementById("batteryLevel").innerText = level + "%";
-            }
-            updateBattery();
-            battery.addEventListener("levelchange", updateBattery);
-        });
-    } else {
-        document.getElementById("batteryLevel").innerText = "Not supported";
-    }
+if(navigator.getBattery){
+navigator.getBattery().then(function(battery){
+
+function update(){
+let level=Math.round(battery.level*100);
+batteryLevel.innerText=level+"%";
+batteryFill.style.width=level+"%";
+
+if(level<=20){
+batteryFill.style.background="#ff4d4d";
+batteryIcon.className="fas fa-battery-quarter";
+}else if(level<=50){
+batteryIcon.className="fas fa-battery-half";
+}else if(level<=80){
+batteryIcon.className="fas fa-battery-three-quarters";
+}else{
+batteryIcon.className="fas fa-battery-full";
+}
+}
+update();
+battery.addEventListener("levelchange",update);
+});
+}else{
+batteryLevel.innerText="N/A";
+}
 </script>
 
 </body>
