@@ -14,11 +14,15 @@ body{
     background-size:cover;
     color:#fff;
 }
+
+/* OVERLAY */
 .overlay{
     background:rgba(0,0,0,.75);
     min-height:100vh;
-    padding:40px 25px;
+    padding:40px 25px 90px; /* ruang status bar bawah */
 }
+
+/* JUDUL */
 h1{
     text-align:center;
     font-size:38px;
@@ -29,8 +33,10 @@ h1{
     from{ text-shadow:0 0 5px #ffd700;}
     to{ text-shadow:0 0 25px #ffd700;}
 }
+
 .label{ color:#00ffcc;font-weight:bold; }
 ul{ padding-left:22px; }
+
 .price{
     text-align:center;
     font-size:24px;
@@ -38,12 +44,15 @@ ul{ padding-left:22px; }
     margin:25px 0;
     font-weight:bold;
 }
+
 .pickup{
     background:rgba(255,215,0,.15);
     padding:15px;
     border-radius:12px;
     margin-top:18px;
 }
+
+/* WA */
 .wa-btn{
     display:block;
     width:fit-content;
@@ -55,51 +64,56 @@ ul{ padding-left:22px; }
     font-size:17px;
     text-decoration:none;
     font-weight:bold;
-    box-shadow:0 0 18px rgba(37,211,102,.7);
 }
 
-/* BATTERY + JAM */
-.battery{
+/* ===== STATUS BAR BAWAH ===== */
+.status-bar{
     position:fixed;
-    top:15px;
-    right:15px;
-    width:170px;
-    background:rgba(0,0,0,.75);
-    padding:10px;
-    border-radius:12px;
-    box-shadow:0 0 12px rgba(0,255,204,.6);
-    font-size:12px;
+    bottom:0;
+    left:0;
+    width:100%;
+    background:rgba(0,0,0,.9);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:10px 15px;
+    box-shadow:0 -2px 15px rgba(0,255,204,.5);
+    z-index:999;
+    font-size:13px;
 }
-.battery-top{
+
+/* BATTERY */
+.battery{
     display:flex;
     align-items:center;
     gap:6px;
 }
 .battery-bar{
-    width:100%;
+    width:70px;
     height:8px;
     background:#333;
     border-radius:10px;
     overflow:hidden;
-    margin-top:6px;
 }
 .battery-fill{
     height:100%;
     width:50%;
     background:linear-gradient(90deg,#00ffcc,#00cc99);
 }
+
+/* JAM */
 .clock{
-    margin-top:8px;
-    text-align:center;
     font-size:14px;
     font-weight:bold;
     color:#00ffcc;
 }
+
+/* TANGGAL */
 .date{
-    text-align:center;
     font-size:11px;
     color:#ccc;
 }
+
 footer{
     text-align:center;
     margin-top:45px;
@@ -111,17 +125,20 @@ footer{
 
 <body>
 
-<!-- BATTERY + JAM + TANGGAL -->
-<div class="battery">
-    <div class="battery-top">
+<!-- STATUS BAR BAWAH -->
+<div class="status-bar">
+    <div class="battery">
         <i id="batteryIcon" class="fas fa-battery-half"></i>
+        <div class="battery-bar">
+            <div id="batteryFill" class="battery-fill"></div>
+        </div>
         <span id="batteryLevel">--%</span>
     </div>
-    <div class="battery-bar">
-        <div id="batteryFill" class="battery-fill"></div>
+
+    <div>
+        <div class="clock" id="clock">--:--</div>
+        <div class="date" id="date">--</div>
     </div>
-    <div class="clock" id="clock">--:--</div>
-    <div class="date" id="date">--</div>
 </div>
 
 <div class="overlay">
@@ -137,7 +154,9 @@ footer{
 
 <p><span class="label"><i class="fas fa-clock"></i> Durasi:</span> 1 Hari</p>
 
-<div class="price"><i class="fas fa-coins"></i> Rp 70.000 / orang</div>
+<div class="price">
+<i class="fas fa-coins"></i> Rp 70.000 / orang
+</div>
 
 <div class="pickup">
 <span class="label"><i class="fas fa-bus"></i> Penjemputan:</span><br>
@@ -147,9 +166,9 @@ Majalaya • Rancaekek • Cileunyi • Soroja • Buahbatu • Pasko • Baros
 <a class="wa-btn" href="https://wa.me/6285194293890" target="_blank">
 <i class="fab fa-whatsapp"></i> Booking via WhatsApp
 </a>
-</div>
 
 <footer>© Wildan Adventure</footer>
+</div>
 
 <script>
 /* BATTERY */
@@ -159,7 +178,8 @@ function update(){
 let level=Math.round(battery.level*100);
 batteryLevel.innerText=level+"%";
 batteryFill.style.width=level+"%";
-batteryIcon.className =
+
+batteryIcon.className=
 level<=20?"fas fa-battery-quarter":
 level<=50?"fas fa-battery-half":
 level<=80?"fas fa-battery-three-quarters":
@@ -170,19 +190,18 @@ battery.addEventListener("levelchange",update);
 });
 }
 
-/* JAM + TANGGAL + KEDIP */
+/* JAM + TANGGAL */
 let blink=true;
 function updateClock(){
 const now=new Date();
 const h=now.getHours().toString().padStart(2,'0');
 const m=now.getMinutes().toString().padStart(2,'0');
-document.getElementById("clock").innerText =
-h+(blink?":":" ")+m;
+clock.innerText=h+(blink?":":" ")+m;
 blink=!blink;
 
-const opsi={weekday:'long',day:'numeric',month:'long',year:'numeric'};
-document.getElementById("date").innerText=
-now.toLocaleDateString('id-ID',opsi);
+date.innerText=now.toLocaleDateString('id-ID',{
+weekday:'long',day:'numeric',month:'long',year:'numeric'
+});
 }
 updateClock();
 setInterval(updateClock,1000);
