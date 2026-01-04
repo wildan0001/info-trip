@@ -1,1 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Goes To Alun-Alun Bandung 31 Januari</title>
 
+    <!-- ICON -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Trebuchet MS', Arial, sans-serif;
+            background: url('https://files.catbox.moe/zk5mgy.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
+        .overlay {
+            background: rgba(0, 0, 0, 0.75);
+            min-height: 100vh;
+            padding: 30px 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            color: #ffd700;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 5px #ffd700; }
+            to { text-shadow: 0 0 20px #ffd700; }
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #00ffcc;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .trip-card {
+            max-width: 720px;
+            margin: auto;
+            background: rgba(25, 25, 25, 0.95);
+            border: 2px solid #8b5a2b;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+            animation: fadeIn 1.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            text-align: center;
+            color: #ffd700;
+        }
+
+        .label {
+            color: #00ffcc;
+            font-weight: bold;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        .price {
+            text-align: center;
+            font-size: 22px;
+            color: #ff4d4d;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        .pickup {
+            background: rgba(255, 215, 0, 0.15);
+            padding: 12px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        /* WhatsApp Button */
+        .wa-btn {
+            display: block;
+            width: fit-content;
+            margin: 30px auto 0;
+            padding: 14px 28px;
+            background: #25D366;
+            color: #fff;
+            border-radius: 40px;
+            font-size: 16px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.7);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .wa-btn i {
+            margin-right: 8px;
+        }
+
+        .wa-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 25px rgba(37, 211, 102, 1);
+        }
+
+        /* Battery */
+        .battery {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.7);
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-size: 13px;
+            box-shadow: 0 0 10px rgba(0,255,204,0.5);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 13px;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+<div class="battery">
+    <i class="fas fa-battery-half"></i>
+    <span id="batteryLevel">Loading...</span>
+</div>
+
+<div class="overlay">
+    <h1><i class="fas fa-map-signs"></i> TRIP AL JABBAR</h1>
+    <div class="subtitle">Wisata Taman Kota Yang Cocok Untuk Edukasi</div>
+
+    <div class="trip-card">
+        <h2>Alun-Alun Bandung</h2>
+
+        <p><span class="label"><i class="fas fa-scroll"></i> Deskripsi:</span><br>
+        Wisata taman dengan arsitektur megah.</p>
+
+        <p><span class="label"><i class="fas fa-gift"></i> Fasilitas:</span></p>
+        <ul>
+            <li>Transportasi PP</li>
+            <li>Bus 2-3 (59)</li>
+            <li>Tips crew,solar,parkir</li>
+            <li>Dokumentasi</li>
+        </ul>
+
+        <p><span class="label"><i class="fas fa-clock"></i> Durasi:</span> 1 Hari</p>
+
+        <div class="price">
+            <i class="fas fa-coins"></i> Rp 200.000 / orang
+        </div>
+
+        <div class="pickup">
+            <span class="label"><i class="fas fa-bus"></i> Penjemputan:</span><br>
+            GT Cileunyi • GT Buah Batu • GT Pasteur • Meeting Point Bandung
+        </div>
+
+        <a class="wa-btn" href="https://wa.me/6285194293890?text=Asalamualaikum%20saya%20mau%20booking%20trip%20alban" target="_blank">
+            <i class="fab fa-whatsapp"></i> Booking via WhatsApp
+        </a>
+    </div>
+
+    <footer>
+        © Wildan Adventure
+    </footer>
+</div>
+
+<script>
+    // Battery Percentage
+    if (navigator.getBattery) {
+        navigator.getBattery().then(function(battery) {
+            function updateBattery() {
+                let level = Math.round(battery.level * 100);
+                document.getElementById("batteryLevel").innerText = level + "%";
+            }
+            updateBattery();
+            battery.addEventListener("levelchange", updateBattery);
+        });
+    } else {
+        document.getElementById("batteryLevel").innerText = "Not supported";
+    }
+</script>
+
+</body>
+</html>
