@@ -19,7 +19,7 @@ body{
 .overlay{
     background:rgba(0,0,0,.75);
     min-height:100vh;
-    padding:40px 25px 90px; /* ruang status bar bawah */
+    padding:40px 25px 90px;
 }
 
 /* JUDUL */
@@ -66,7 +66,7 @@ ul{ padding-left:22px; }
     font-weight:bold;
 }
 
-/* ===== STATUS BAR BAWAH ===== */
+/* STATUS BAR */
 .status-bar{
     position:fixed;
     bottom:0;
@@ -101,14 +101,12 @@ ul{ padding-left:22px; }
     background:linear-gradient(90deg,#00ffcc,#00cc99);
 }
 
-/* JAM */
+/* JAM & TANGGAL */
 .clock{
     font-size:14px;
     font-weight:bold;
     color:#00ffcc;
 }
-
-/* TANGGAL */
 .date{
     font-size:11px;
     color:#ccc;
@@ -125,7 +123,7 @@ footer{
 
 <body>
 
-<!-- STATUS BAR BAWAH -->
+<!-- STATUS BAR -->
 <div class="status-bar">
     <div class="battery">
         <i id="batteryIcon" class="fas fa-battery-half"></i>
@@ -160,10 +158,11 @@ footer{
 
 <div class="pickup">
 <span class="label"><i class="fas fa-bus"></i> Penjemputan:</span><br>
-Majalaya • Rancaekek • Cileunyi • Soroja • Buahbatu • Pasko • Baros
+Majalaya • Rancaekek • Gt Cileunyi • Gt Soroja • Gt Buahbatu • Gt Pasko • Gt Baros • Gt Pasteur
 </div>
 
-<a class="wa-btn" href="https://wa.me/6285194293890" target="_blank">
+<!-- WA BIASA -->
+<a class="wa-btn" href="whatsapp://send?phone=6285194293890&text=Asalamualaikum%20saya%20mau%20booking%20trip%20Alun-Alun%20Bandung">
 <i class="fab fa-whatsapp"></i> Booking via WhatsApp
 </a>
 
@@ -190,7 +189,7 @@ battery.addEventListener("levelchange",update);
 });
 }
 
-/* JAM + TANGGAL */
+/* JAM & TANGGAL */
 let blink=true;
 function updateClock(){
 const now=new Date();
