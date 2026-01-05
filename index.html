@@ -34,6 +34,35 @@ h1{
     to{ text-shadow:0 0 25px #ffd700;}
 }
 
+/* === FAMPLET ANIMASI === */
+.famlet-box{
+    text-align:center;
+    margin:30px 0;
+    animation:fadeZoom 1.3s ease forwards;
+}
+@keyframes fadeZoom{
+    from{
+        opacity:0;
+        transform:scale(.85);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+.famlet-box img{
+    max-width:100%;
+    width:420px;
+    border-radius:18px;
+    box-shadow:0 0 25px rgba(255,215,0,.6);
+    transition:.4s ease;
+}
+.famlet-box img:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 40px rgba(0,255,204,.9);
+}
+
+/* TEKS */
 .label{ color:#00ffcc;font-weight:bold; }
 ul{ padding-left:22px; }
 
@@ -101,7 +130,7 @@ ul{ padding-left:22px; }
     background:linear-gradient(90deg,#00ffcc,#00cc99);
 }
 
-/* JAM & TANGGAL */
+/* JAM */
 .clock{
     font-size:14px;
     font-weight:bold;
@@ -123,7 +152,6 @@ footer{
 
 <body>
 
-<!-- STATUS BAR -->
 <div class="status-bar">
     <div class="battery">
         <i id="batteryIcon" class="fas fa-battery-half"></i>
@@ -132,7 +160,6 @@ footer{
         </div>
         <span id="batteryLevel">--%</span>
     </div>
-
     <div>
         <div class="clock" id="clock">--:--</div>
         <div class="date" id="date">--</div>
@@ -141,6 +168,11 @@ footer{
 
 <div class="overlay">
 <h1><i class="fas fa-map-signs"></i> Trip Alun-Alun Bandung With King Rock Tanggal 31 Januari 2026</h1>
+
+<!-- FAMPLET -->
+<div class="famlet-box">
+    <img src="https://files.catbox.moe/z6alf2.png" alt="Famlet Trip">
+</div>
 
 <p><span class="label"><i class="fas fa-gift"></i> Fasilitas:</span></p>
 <ul>
@@ -160,7 +192,6 @@ footer{
 Majalaya • Rancaekek • Gt Cileunyi • Gt Soroja • Gt Buahbatu • Gt Pasko • Gt Baros • Gt Pasteur
 </div>
 
-<!-- WA BIASA -->
 <a class="wa-btn" href="whatsapp://send?phone=6285194293890&text=Asalamualaikum%20saya%20mau%20booking%20trip%20Alun-Alun%20Bandung">
 <i class="fab fa-whatsapp"></i> Booking via WhatsApp
 </a>
@@ -176,7 +207,6 @@ function update(){
 let level=Math.round(battery.level*100);
 batteryLevel.innerText=level+"%";
 batteryFill.style.width=level+"%";
-
 batteryIcon.className=
 level<=20?"fas fa-battery-quarter":
 level<=50?"fas fa-battery-half":
@@ -188,15 +218,15 @@ battery.addEventListener("levelchange",update);
 });
 }
 
-/* JAM & TANGGAL */
+/* JAM */
 let blink=true;
 function updateClock(){
 const now=new Date();
-const h=now.getHours().toString().padStart(2,'0');
-const m=now.getMinutes().toString().padStart(2,'0');
-clock.innerText=h+(blink?":":" ")+m;
+clock.innerText=
+now.getHours().toString().padStart(2,'0')+
+(blink?":":" ")+
+now.getMinutes().toString().padStart(2,'0');
 blink=!blink;
-
 date.innerText=now.toLocaleDateString('id-ID',{
 weekday:'long',day:'numeric',month:'long',year:'numeric'
 });
